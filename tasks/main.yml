@@ -1,6 +1,6 @@
 ---
-#- hosts: localhost
-#  tasks:
+- hosts: localhost
+  tasks:
   - name: Check whether Java is installed or not
     command: java -version
     register: java_result
@@ -11,7 +11,7 @@
       msg: "Success - Java is installed"
     when: java_result is success
   - name: install play_role_2 if java isn't installed
-    command: ansible-galaxy install --roles-path . -r /home/U65986/requirements1.yml
+    command: ansible-galaxy install --roles-path ../../ -r requirements1.yml
 #  - unarchive:
 #      src: https://github.com/KarthikSadashiva/DigitalAlpha/raw/master/SSDevops-Learning.zip
 #      dest: /home/U65986/Requirement/playbook/roles/
