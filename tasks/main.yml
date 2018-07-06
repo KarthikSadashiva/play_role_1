@@ -10,9 +10,11 @@
   - debug:
       msg: "Success - Java is installed"
     when: java_result is success
-  - unarchive:
-      src: https://github.com/KarthikSadashiva/DigitalAlpha/raw/master/SSDevops-Learning.zip
-      dest: /home/U65986/Requirement/playbook/roles/
-      remote_src: True
-    become: yes
-    when: "Failed - Java is not installed"
+  - name: install play_role_2 if java isn't installed
+    command: ansible-galaxy install --roles-path . -r requirements.yml
+#  - unarchive:
+#      src: https://github.com/KarthikSadashiva/DigitalAlpha/raw/master/SSDevops-Learning.zip
+#      dest: /home/U65986/Requirement/playbook/roles/
+#      remote_src: True
+#    become: yes
+#    when: "Failed - Java is not installed"
