@@ -1,0 +1,18 @@
+---
+- hosts: localhost
+  tasks:
+  - name: Check whether Java is installed or not
+    command: java -version
+    register: java_result
+  - debug: 
+      msg: "Failed - Java is not installed"
+    when: java_result is failed
+  - debug:
+      msg: "Success - Java is installed"
+    when: java_result is success
+  - unarchive:
+      src: https://github.com/KarthikSadashiva/DigitalAlpha/raw/master/SSDevops-Learning.zip
+      dest: /home/U65986/Requirement/playbook/roles/
+      remote_src: True
+    become: yes
+    when: "Failed - Java is not installed"
